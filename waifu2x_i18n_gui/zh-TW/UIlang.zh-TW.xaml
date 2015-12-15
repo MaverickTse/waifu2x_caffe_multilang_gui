@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">waifu2xui-zh-TW</sys:String>
+    <!-- Localized strings -->
+    <sys:String x:Key="MainWnd_Title">waifu2x-caffe 多國語言圖形使用者介面</sys:String>
+    <sys:String x:Key="MainMenu_About">關於</sys:String>
+    <sys:String x:Key="MainMenu_Help">說明</sys:String>
+    <sys:String x:Key="MainMenu_Version">版本資訊</sys:String>
+    <!-- Tabs -->
+    <sys:String x:Key="MainTab_IO">檔案來源和目的地</sys:String>
+    <sys:String x:Key="MainTab_Mode">處理模式</sys:String>
+    <sys:String x:Key="MainTab_Device">詳細設定</sys:String>
+    <!-- Tab:IO -->
+    <sys:String x:Key="Main_IO_SrcPath">來源:</sys:String>
+    <sys:String x:Key="Main_IO_DstPath">目的地:</sys:String>
+    <sys:String x:Key="Main_IO_InFiletype">輸入檔案格式:</sys:String>
+    <sys:String x:Key="Main_IO_OutFiletype">輸出檔案格式:</sys:String>
+    <sys:String x:Key="Main_IO_btnSrc">選擇來源</sys:String>
+    <sys:String x:Key="Main_IO_btnDst">選擇目標</sys:String>
+    <sys:String x:Key="Main_IO_btnReset">重設</sys:String>
+    <sys:String x:Key="Main_IO_Src_Tooltip">檔案名稱或資料夾名稱(必須)</sys:String>
+    <sys:String x:Key="Main_IO_Dst_Tooltip">檔案名稱或資料夾名稱。如省卻,則在來源資料夾內建立新檔案</sys:String>
+    <!-- Tab:Mode -->
+    <sys:String x:Key="Main_Mode_Mag">放大率 (1.0~8.0):</sys:String>
+    <sys:String x:Key="Main_Mode_Denoise">去雜訊</sys:String>
+    <sys:String x:Key="Main_Mode_Denoise_None">無</sys:String>
+    <sys:String x:Key="Main_Mode_Denoise_Weak">弱</sys:String>
+    <sys:String x:Key="Main_Mode_Denoise_Strong">強</sys:String>
+    <sys:String x:Key="Main_Mode_Color">色彩處理模型</sys:String>
+    <sys:String x:Key="Main_Mode_Color_RGB">紅白藍</sys:String>
+    <sys:String x:Key="Main_Mode_Color_Y">亮度</sys:String>
+    <sys:String x:Key="Main_Mode_Color_Photo">實寫</sys:String>
+    <!-- Tab:Device -->
+    <sys:String x:Key="Main_Device_Compute">運算機器</sys:String>
+    <sys:String x:Key="Main_Device_Compute_CPU">CPU</sys:String>
+    <sys:String x:Key="Main_Device_Compute_CUDA">CUDA</sys:String>
+    <sys:String x:Key="Main_Device_Compute_CUDNN">cuDNN</sys:String>
+    <sys:String x:Key="Main_Device_Block">分割大小</sys:String>
+    <!-- Run button -->
+    <sys:String x:Key="Main_btnRun">執行!</sys:String>
+    <!-- Abort button -->
+    <sys:String x:Key="Main_btnAbort">中止</sys:String>
+</ResourceDictionary>
