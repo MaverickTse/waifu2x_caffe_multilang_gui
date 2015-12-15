@@ -95,7 +95,7 @@ namespace waifu2x_i18n_gui
             string msg =
                 "Multilingual GUI for waifu2x-caffe\n" +
                 "By Maverick Tse (2015)\n" +
-                "Version 1.0.0\n" +
+                "Version 1.0.1\n" +
                 "BuildDate: 15 Dec,2015\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
@@ -197,8 +197,12 @@ namespace waifu2x_i18n_gui
 
         private void OnConsoleDataRecv(object sender, DataReceivedEventArgs e)
         {
-            console_buffer.Append(e.Data);
-            console_buffer.Append("\n");
+            if (!String.IsNullOrEmpty(e.Data))
+            {
+                console_buffer.Append(e.Data);
+                console_buffer.Append(Environment.NewLine);
+            }
+            
         }
 
         private void OnProcessExit(object sender, EventArgs e)
@@ -274,6 +278,8 @@ namespace waifu2x_i18n_gui
             param_informat.Clear();
             param_informat.Append("-l ");
             param_informat.Append(this.txtExt.Text);
+            param_informat.Append(@":");
+            param_informat.Append(this.txtExt.Text.ToUpper());
 
             // Set output format
             param_outformat.Clear();
@@ -334,12 +340,13 @@ namespace waifu2x_i18n_gui
             psinfo.RedirectStandardOutput = true;
             psinfo.UseShellExecute = false;
             psinfo.WorkingDirectory = App.directory;
+            psinfo.CreateNoWindow = true;
             psinfo.WindowStyle= ProcessWindowStyle.Hidden;
             pHandle.StartInfo = psinfo;
             pHandle.EnableRaisingEvents = true;
             pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-            pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-            pHandle.Exited += new EventHandler(OnProcessExit);
+            //pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
+            //pHandle.Exited += new EventHandler(OnProcessExit);
 
             // Starts working
             this.btnRun.IsEnabled = false;
@@ -347,10 +354,22 @@ namespace waifu2x_i18n_gui
             console_buffer.Clear();
             console_buffer.Append(full_param);
             console_buffer.Append("\n");
-            bool pState = pHandle.Start();
+            try
+            {
+                bool pState = pHandle.Start();
+                
+            }
+            catch (Exception)
+            {
+                pHandle.Kill();
+                MessageBox.Show("Some parameters do not mix well and crashed...");
+                //throw;
+            }
             pHandle.BeginOutputReadLine();
-            pHandle.BeginErrorReadLine();
+            //pHandle.BeginErrorReadLine();
+
             pHandle.WaitForExit();
+            pHandle.CancelOutputRead();
             pHandle.Close();
             this.btnAbort.IsEnabled = false;
             this.btnRun.IsEnabled = true;
