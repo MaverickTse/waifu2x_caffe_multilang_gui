@@ -73,6 +73,8 @@ namespace waifu2x_i18n_gui
 
         public static StringBuilder console_buffer = new StringBuilder();
 
+        public static bool flagAbort = false;
+
         private void OnMenuHelpClick(object sender, RoutedEventArgs e)
         {
             string msg =
@@ -95,7 +97,7 @@ namespace waifu2x_i18n_gui
             string msg =
                 "Multilingual GUI for waifu2x-caffe\n" +
                 "By Maverick Tse (2015)\n" +
-                "Version 1.0.1\n" +
+                "Version 1.0.3\n" +
                 "BuildDate: 15 Dec,2015\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
@@ -201,22 +203,53 @@ namespace waifu2x_i18n_gui
             {
                 console_buffer.Append(e.Data);
                 console_buffer.Append(Environment.NewLine);
+                Dispatcher.BeginInvoke(new Action(delegate
+                {
+                    this.CLIOutput.AppendText(e.Data);
+                    this.CLIOutput.AppendText(Environment.NewLine);
+                }), System.Windows.Threading.DispatcherPriority.ApplicationIdle, null);
             }
             
         }
 
         private void OnProcessExit(object sender, EventArgs e)
         {
-
-            //TODO
+            if (!flagAbort)
+            {
+                try
+                {
+                    pHandle.CancelOutputRead();
+                }
+                catch (Exception)
+                {
+                    //No need to throw
+                    //throw;
+                }
+                
+            }
             
+            pHandle.Close();
+            Dispatcher.BeginInvoke(new Action(delegate
+            {
+                this.btnAbort.IsEnabled = false;
+                this.btnRun.IsEnabled = true;
+                //this.CLIOutput.Text = console_buffer.ToString();
+            }), System.Windows.Threading.DispatcherPriority.ApplicationIdle, null);
+            flagAbort = false;
         }
 
         private void OnAbort(object sender, RoutedEventArgs e)
         {
             if (!pHandle.HasExited)
             {
+                try
+                {
+                    pHandle.CancelOutputRead();
+                }
+                catch (Exception) { /*Nothing*/ }
+                
                 pHandle.Kill();
+                flagAbort = true;
             }
         }
 
@@ -321,7 +354,8 @@ namespace waifu2x_i18n_gui
                 MessageBox.Show("Nothing to do");
                 return;
             }
-
+            this.btnRun.IsEnabled = false;
+            this.btnAbort.IsEnabled = true;
             // Assemble parameters
             string full_param = String.Join(" ", param_src.ToString(),
                 param_dst.ToString(),
@@ -346,11 +380,11 @@ namespace waifu2x_i18n_gui
             pHandle.EnableRaisingEvents = true;
             pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
             //pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-            //pHandle.Exited += new EventHandler(OnProcessExit);
+            pHandle.Exited += new EventHandler(OnProcessExit);
 
             // Starts working
-            this.btnRun.IsEnabled = false;
-            this.btnAbort.IsEnabled = true;
+            
+            
             console_buffer.Clear();
             console_buffer.Append(full_param);
             console_buffer.Append("\n");
@@ -368,12 +402,14 @@ namespace waifu2x_i18n_gui
             pHandle.BeginOutputReadLine();
             //pHandle.BeginErrorReadLine();
 
-            pHandle.WaitForExit();
+            //pHandle.WaitForExit();
+            /*
             pHandle.CancelOutputRead();
             pHandle.Close();
             this.btnAbort.IsEnabled = false;
             this.btnRun.IsEnabled = true;
             this.CLIOutput.Text = console_buffer.ToString();
+            */
         }
     }
 }
