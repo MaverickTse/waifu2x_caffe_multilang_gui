@@ -103,7 +103,7 @@
         </TabControl>
         <Button Name="btnRun" Grid.Column="2" Grid.Row="4" MaxHeight="240" Padding="5" Content="{DynamicResource ResourceKey=Main_btnRun}" Click="OnRun"></Button>
         <Button Name="btnAbort" Grid.Column="1" Grid.Row="4" MaxHeight="240" Padding="5" IsEnabled="False" Content="{DynamicResource ResourceKey=Main_btnAbort}" Click="OnAbort"></Button>
-        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" MinHeight="120" MinWidth="512" Margin="3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
+        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" MinHeight="120" MinWidth="512" MaxWidth="640" Margin="3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
     </Grid>
     
 </Window>
