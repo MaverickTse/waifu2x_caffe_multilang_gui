@@ -28,7 +28,7 @@
     <sys:String x:Key="Main_Mode_Denoise_Weak">弱</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_Strong">強</sys:String>
     <sys:String x:Key="Main_Mode_Color">色彩處理模型</sys:String>
-    <sys:String x:Key="Main_Mode_Color_RGB">紅白藍</sys:String>
+    <sys:String x:Key="Main_Mode_Color_RGB">紅綠藍</sys:String>
     <sys:String x:Key="Main_Mode_Color_Y">亮度</sys:String>
     <sys:String x:Key="Main_Mode_Color_Photo">實寫</sys:String>
     <!-- Tab:Device -->
