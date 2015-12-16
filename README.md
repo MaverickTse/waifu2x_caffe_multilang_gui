@@ -17,7 +17,7 @@ Multilingual GUI for waifu2x-caffe. Localization can be done via user-editable x
   
 ## Points-to-note
 * You need a working copy of [waifu2x-caffe](https://github.com/lltcggie/waifu2x-caffe/releases)
-* Uzip all files directly to the base folder of waifu2x-caffe, do not put it in into subdirectory.
+* Unzip all files directly to the base folder of waifu2x-caffe, do not put it in into subdirectory.
 * Do not rename the default subdirectory (i.e. there should be a "models" folder)
 * Do not delete or move _waifu2x-caffe-cui.exe_
 
