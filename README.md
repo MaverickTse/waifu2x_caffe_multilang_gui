@@ -11,11 +11,12 @@ Multilingual GUI for waifu2x-caffe. Localization can be done via user-editable x
   * All the text enclosed by the ```<sys:String>``` tags
 5. About language code:
   * make up from _ab_-_XY_
-  * ab can be found [http://www.loc.gov/standards/iso639-2/php/langcodes-search.php](Here) as Alpha-2 codes
-  * XY can be found [https://www.iso.org/obp/ui/#search](Here)
-  * Essentially ab is the language, XY is the country
+  * ab can be found [Here](http://www.loc.gov/standards/iso639-2/php/langcodes-search.php) as Alpha-2 codes
+  * XY can be found [Here](https://www.iso.org/obp/ui/#search)
+  * Essentially _ab_ is the language, _XY_ is the country
+  
 ## Points-to-note
-* You need a working copy of waifu2x-caffe
+* You need a working copy of [waifu2x-caffe](https://github.com/lltcggie/waifu2x-caffe/releases)
 * Uzip all files directly to the base folder of waifu2x-caffe, do not put it in into subdirectory.
 * Do not rename the default subdirectory (i.e. there should be a "models" folder)
 * Do not delete or move _waifu2x-caffe-cui.exe_
