@@ -56,6 +56,7 @@ namespace waifu2x_i18n_gui
             btnCUDA.IsChecked = true;
             btnNoDenoise.IsChecked = true;
             btnRGB.IsChecked = true;
+            cbTTA.IsChecked = false;
         }
 
         public static StringBuilder param_src= new StringBuilder("");
@@ -68,6 +69,7 @@ namespace waifu2x_i18n_gui
         public static StringBuilder param_device = new StringBuilder("-p gpu");
         public static StringBuilder param_block = new StringBuilder("-c 128");
         public static StringBuilder param_mode = new StringBuilder("-m noise_scale");
+        public static StringBuilder param_tta = new StringBuilder("-t 0");
         public static Process pHandle = new Process();
         public static ProcessStartInfo psinfo = new ProcessStartInfo();
 
@@ -97,8 +99,8 @@ namespace waifu2x_i18n_gui
             string msg =
                 "Multilingual GUI for waifu2x-caffe\n" +
                 "By Maverick Tse (2015)\n" +
-                "Version 1.0.3\n" +
-                "BuildDate: 15 Dec,2015\n" +
+                "Version 1.2.4\n" +
+                "BuildDate: 26 Dec,2015\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -195,6 +197,17 @@ namespace waifu2x_i18n_gui
             param_block.Clear();
             RadioButton optsrc= sender as RadioButton;
             param_block.Append(optsrc.Tag.ToString());
+        }
+
+        private void OnTTAChecked(object sender, RoutedEventArgs e)
+        {
+            param_tta.Clear();
+            CheckBox optsrc= sender as CheckBox;
+            if (optsrc.IsChecked.Value)
+            {
+                param_tta.Append(optsrc.Tag.ToString());
+            }
+            
         }
 
         private void OnConsoleDataRecv(object sender, DataReceivedEventArgs e)
@@ -366,7 +379,8 @@ namespace waifu2x_i18n_gui
                 param_denoise.ToString(),
                 param_color.ToString(),
                 param_block.ToString(),
-                param_device.ToString());
+                param_device.ToString(),
+                param_tta.ToString());
             // Setup ProcessStartInfo
             psinfo.FileName = "waifu2x-caffe-cui.exe";
             psinfo.Arguments = full_param;

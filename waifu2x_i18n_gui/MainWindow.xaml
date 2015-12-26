@@ -98,6 +98,7 @@
                             <RadioButton Tag="-c 512" Name="btn512" Margin="2" Checked="OnBlockChecked">512</RadioButton>
                         </StackPanel>
                     </GroupBox>
+                    <CheckBox Name="cbTTA" Content="TTA Mode"  Margin="3" Tag="-t 1" ToolTip="Increase PSNR by ~0.15 but 8 times slower"></CheckBox>
                 </StackPanel>
             </TabItem>
         </TabControl>
