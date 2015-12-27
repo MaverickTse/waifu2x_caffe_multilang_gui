@@ -75,7 +75,7 @@
                             <StackPanel Orientation="Vertical" Margin="3">
                                 <RadioButton Tag="--model_dir models/anime_style_art_rgb" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_RGB}" Checked="OnColorChecked"></RadioButton>
                                 <RadioButton Tag="--model_dir models/anime_style_art" Name="btnY" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_Y}" Checked="OnColorChecked"></RadioButton>
-                                <RadioButton Tag="--model_dir models/ukbench" Name="btnPhoto" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_Photo}" Checked="OnColorChecked"></RadioButton>
+                                <RadioButton Tag="--model_dir models/photo" Name="btnPhoto" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_Photo}" Checked="OnColorChecked"></RadioButton>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>

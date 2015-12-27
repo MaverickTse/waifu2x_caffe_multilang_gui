@@ -61,7 +61,7 @@ namespace waifu2x_i18n_gui
 
         public static StringBuilder param_src= new StringBuilder("");
         public static StringBuilder param_dst = new StringBuilder("");
-        public static StringBuilder param_informat = new StringBuilder("png:jpg:jpeg:bmp:tif:tiff");
+        public static StringBuilder param_informat = new StringBuilder("png:jpg:jpeg:bmp:tif:tiff:webp");
         public static StringBuilder param_outformat = new StringBuilder("png");
         public static StringBuilder param_mag = new StringBuilder("1.0");
         public static StringBuilder param_denoise= new StringBuilder("");
@@ -99,8 +99,8 @@ namespace waifu2x_i18n_gui
             string msg =
                 "Multilingual GUI for waifu2x-caffe\n" +
                 "By Maverick Tse (2015)\n" +
-                "Version 1.2.4\n" +
-                "BuildDate: 26 Dec,2015\n" +
+                "Version 1.4.4\n" +
+                "BuildDate: 27 Dec,2015\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -125,7 +125,7 @@ namespace waifu2x_i18n_gui
 
         private void OnFormatReset(object sender, RoutedEventArgs e)
         {
-            this.txtExt.Text = "png:jpg:jpeg:tif:tiff:bmp:gif";
+            this.txtExt.Text = "png:jpg:jpeg:tif:tiff:bmp:gif:webp";
         }
 
         private void MenuItem_Style_Click(object sender, RoutedEventArgs e)
